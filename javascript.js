@@ -18,10 +18,9 @@ function Book(title, author, pages, isRead) {
     };
 }
 
-function addBookToLibrary() {
-    // take some arguments,
-    // create a book from those arguments, and
-    // store the new book object into an array
+function addBookToLibrary(title, author, pages, isRead) {
+    const book = new Book("MyTitle", "MyAuthor", 200, true);
+    myLibrary.push(book);
 }
 
 function displayBooks() {
@@ -31,7 +30,7 @@ function displayBooks() {
     // add read button on each book, to change its read status (using a prototype function)
 }
 
-const book1 = new Book("MyTitle", "MyAuthor", 200, true);
+addBookToLibrary("MyTitle", "MyAuthor", 200, true);
 
 console.log(myLibrary);
-console.log(book1.info());
+console.log(myLibrary.at(0).info());
