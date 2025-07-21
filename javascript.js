@@ -18,26 +18,27 @@ function Book(title, author, pages, isRead) {
     };
 }
 
-function addBookToLibrary(title, author, pages, isRead) {
+function addToLibrary(title, author, pages, isRead) {
     const book = new Book(title, author, pages, isRead);
     myLibrary.push(book);
 }
-function displayObjectOnPage() {
+function displayOnPage() {
     myLibrary.forEach((obj) => {
+        const bookSection = document.querySelector(".books")
         const newDiv = document.createElement("div");
         const newContent = document.createTextNode(obj.info());
         newDiv.appendChild(newContent);
-        document.body.appendChild(newDiv);
+        bookSection.appendChild(newDiv);
     });
 
 }
 
-addBookToLibrary("MyTitle", "MyAuthor", 200, true);
-addBookToLibrary("MyTitle2", "MyAuthor2", 210, false);
-addBookToLibrary(
+addToLibrary("MyTitle", "MyAuthor", 200, true);
+addToLibrary("MyTitle2", "MyAuthor2", 210, false);
+addToLibrary(
     "TheHobbit",
     "Tolkien (probably written wrong)",
     9999999,
     true
 );
-displayObjectOnPage();
+displayOnPage();
