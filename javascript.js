@@ -1,6 +1,6 @@
 const myLibrary = [];
 
-const addNewBookButton = document.querySelector(".add-new-book");
+const addBookButton = document.querySelector(".add-new-book");
 const confirmButton = document.querySelector(".confirm");
 const dialog = document.querySelector(".popup");
 const bookSection = document.querySelector(".books");
@@ -42,15 +42,10 @@ function displayOnPage() {
     });
 }
 
-addNewBookButton.addEventListener("click", () => {
+addBookButton.addEventListener("click", () => {
     dialog.showModal();
 });
-dialog.addEventListener("close", () => {
-    const output =
-        dialog.returnValue === "default"
-            ? "No return value."
-            : `ReturnValue: ${dialog.returnValue}.`;
-});
+
 confirmButton.addEventListener("click", (event) => {
     event.preventDefault();
     addToLibrary(title.value, author.value, pages.value, read.checked);
