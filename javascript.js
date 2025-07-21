@@ -23,17 +23,13 @@ function addBookToLibrary(title, author, pages, isRead) {
     myLibrary.push(book);
 }
 function displayObjectOnPage() {
-    // should work distinct of the book objects
-    // Display in any visual way on the page
     myLibrary.forEach((obj) => {
-        console.log(obj);
         const newDiv = document.createElement("div");
         const newContent = document.createTextNode(obj.info());
         newDiv.appendChild(newContent);
         document.body.appendChild(newDiv);
     });
-    // add removal button on each books display (could use a data-attribute in relation to books id)
-    // add read button on each book, to change its read status (using a prototype function)
+
 }
 
 addBookToLibrary("MyTitle", "MyAuthor", 200, true);
