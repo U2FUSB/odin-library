@@ -2,8 +2,8 @@ const myLibrary = [];
 
 const addBookButton = document.querySelector(".add-new-book");
 const confirmButton = document.querySelector(".confirm");
-const dialog = document.querySelector(".popup");
 const bookSection = document.querySelector(".books");
+const dialog = document.querySelector(".popup");
 
 const title = document.querySelector("#title");
 const author = document.querySelector("#author");
@@ -37,7 +37,11 @@ function displayOnPage() {
     myLibrary.forEach((obj) => {
         const newDiv = document.createElement("div");
         const newContent = document.createTextNode(obj.info());
+        const newRemoveButton = document.createElement("button");
+        const newRemoveButtonText = document.createTextNode("Remove Book");
         newDiv.appendChild(newContent);
+        newDiv.appendChild(newRemoveButton);
+        newRemoveButton.appendChild(newRemoveButtonText);
         bookSection.appendChild(newDiv);
     });
 }
@@ -46,8 +50,7 @@ addBookButton.addEventListener("click", () => {
     dialog.showModal();
 });
 
-confirmButton.addEventListener("click", (event) => {
-    event.preventDefault();
+confirmButton.addEventListener("click", () => {
     addToLibrary(title.value, author.value, pages.value, read.checked);
     displayOnPage();
     dialog.close();
