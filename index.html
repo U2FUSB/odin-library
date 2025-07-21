@@ -9,18 +9,20 @@
     </head>
     <body>
         <section class="books"></section>
-        <button>New Book</button>
-        <dialog>
+        <button class="add-new-book">New Book</button>
+        <dialog class="popup">
             <p>Please enter your new book details here:</p>
-            <label for="title">Title: </label>
-            <input type="text" id="title" name="title" placeholder="MyTitle" />
-            <label for="author">Author: </label>
-            <input type="text" id="author" name="author" placeholder="MyAuthor" />
-            <label for="pages">Pages: </label>
-            <input type="text" id="pages" name="pages" placeholder="211" />
-            <label for="read">Read: </label>
-            <input type="checkbox" id="read" name="read" />
-            <button type="submit">Save Book</button>
+            <form method="dialog">
+                <label for="title">Title: </label>
+                <input type="text" id="title" name="title" placeholder="MyTitle" />
+                <label for="author">Author: </label>
+                <input type="text" id="author" name="author" placeholder="MyAuthor" />
+                <label for="pages">Pages: </label>
+                <input type="text" id="pages" name="pages" placeholder="211" />
+                <label for="read">Read: </label>
+                <input type="checkbox" id="read" name="read" />
+                <button type="submit">Save Book</button>
+            </form>
         </dialog>
     </body>
 </html>

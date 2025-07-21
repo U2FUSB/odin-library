@@ -1,4 +1,6 @@
 const myLibrary = [];
+const addNewBookButton = document.querySelector(".add-new-book");
+const popup = document.querySelector(".popup");
 
 function Book(title, author, pages, isRead) {
     if (!new.target) {
@@ -24,21 +26,21 @@ function addToLibrary(title, author, pages, isRead) {
 }
 function displayOnPage() {
     myLibrary.forEach((obj) => {
-        const bookSection = document.querySelector(".books")
+        const bookSection = document.querySelector(".books");
         const newDiv = document.createElement("div");
         const newContent = document.createTextNode(obj.info());
         newDiv.appendChild(newContent);
         bookSection.appendChild(newDiv);
     });
-
 }
+
+addNewBookButton.addEventListener('click', () => {
+    if (!popup.hasAttribute("open")) {
+        popup.setAttribute("open","")
+    }
+})
 
 addToLibrary("MyTitle", "MyAuthor", 200, true);
 addToLibrary("MyTitle2", "MyAuthor2", 210, false);
-addToLibrary(
-    "TheHobbit",
-    "Tolkien (probably written wrong)",
-    9999999,
-    true
-);
+addToLibrary("TheHobbit", "Tolkien (probably written wrong)", 9999999, true);
 displayOnPage();
