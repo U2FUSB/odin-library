@@ -1,6 +1,8 @@
 const myLibrary = [];
 const addNewBookButton = document.querySelector(".add-new-book");
-const popup = document.querySelector(".popup");
+const dialog = document.querySelector(".popup");
+const confirmButton = document.querySelector(".confirm");
+const chosenBookTitle = document.querySelector("#title");
 
 function Book(title, author, pages, isRead) {
     if (!new.target) {
@@ -34,11 +36,20 @@ function displayOnPage() {
     });
 }
 
-addNewBookButton.addEventListener('click', () => {
-    if (!popup.hasAttribute("open")) {
-        popup.setAttribute("open","")
-    }
-})
+addNewBookButton.addEventListener("click", () => {
+    dialog.showModal();
+});
+dialog.addEventListener("close", () => {
+    const output =
+        dialog.returnValue === "default"
+            ? "No return value."
+            : `ReturnValue: ${dialog.returnValue}.`;
+    console.log(output);
+});
+confirmButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    dialog.close(title.value);
+});
 
 addToLibrary("MyTitle", "MyAuthor", 200, true);
 addToLibrary("MyTitle2", "MyAuthor2", 210, false);
