@@ -1,8 +1,14 @@
 const myLibrary = [];
+
 const addNewBookButton = document.querySelector(".add-new-book");
-const dialog = document.querySelector(".popup");
 const confirmButton = document.querySelector(".confirm");
-const chosenBookTitle = document.querySelector("#title");
+const dialog = document.querySelector(".popup");
+const bookSection = document.querySelector(".books");
+
+const title = document.querySelector("#title");
+const author = document.querySelector("#author");
+const pages = document.querySelector("#pages");
+const read = document.querySelector("#read");
 
 function Book(title, author, pages, isRead) {
     if (!new.target) {
@@ -27,8 +33,8 @@ function addToLibrary(title, author, pages, isRead) {
     myLibrary.push(book);
 }
 function displayOnPage() {
+    bookSection.innerHTML = "";
     myLibrary.forEach((obj) => {
-        const bookSection = document.querySelector(".books");
         const newDiv = document.createElement("div");
         const newContent = document.createTextNode(obj.info());
         newDiv.appendChild(newContent);
@@ -44,11 +50,12 @@ dialog.addEventListener("close", () => {
         dialog.returnValue === "default"
             ? "No return value."
             : `ReturnValue: ${dialog.returnValue}.`;
-    console.log(output);
 });
 confirmButton.addEventListener("click", (event) => {
     event.preventDefault();
-    dialog.close(title.value);
+    addToLibrary(title.value, author.value, pages.value, read.checked);
+    displayOnPage();
+    dialog.close();
 });
 
 addToLibrary("MyTitle", "MyAuthor", 200, true);
