@@ -34,15 +34,17 @@ function addToLibrary(title, author, pages, isRead) {
 }
 function displayOnPage() {
     bookSection.innerHTML = "";
-    myLibrary.forEach((obj) => {
-        const newDiv = document.createElement("div");
-        const newContent = document.createTextNode(obj.info());
-        const newRemoveButton = document.createElement("button");
-        const newRemoveButtonText = document.createTextNode("Remove Book");
-        newDiv.appendChild(newContent);
-        newDiv.appendChild(newRemoveButton);
-        newRemoveButton.appendChild(newRemoveButtonText);
-        bookSection.appendChild(newDiv);
+    myLibrary.forEach((book) => {
+        const div = document.createElement("div");
+        const removeButton = document.createElement("button");
+        div.textContent = book.info();
+        removeButton.textContent = "Remove Book";
+        removeButton.dataset.id = book.id;
+        bookSection.appendChild(div);
+        div.appendChild(removeButton);
+        removeButton.addEventListener("click",() => {
+            console.log(`clicked ${book.id}`)
+        });
     });
 }
 
