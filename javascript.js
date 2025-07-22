@@ -27,6 +27,9 @@ function Book(title, author, pages, isRead) {
         return `${this.title} by ${this.author}, ${this.pages}, ${isReadMessage}`;
     };
 }
+Book.prototype.toggleReadStatus = function () {
+    this.isRead = !this.isRead;
+};
 
 function addToLibrary(title, author, pages, isRead) {
     const book = new Book(title, author, pages, isRead);
@@ -44,12 +47,23 @@ function displayOnPage() {
     myLibrary.forEach((book) => {
         const div = document.createElement("div");
         const removeButton = document.createElement("button");
+        const readButton = document.createElement("button");
+
         div.textContent = book.info();
         removeButton.textContent = "Remove Book";
+        readButton.textContent = "Change read status";
+
         removeButton.dataset.id = book.id;
+        readButton.dataset.id = book.id;
+
         bookSection.appendChild(div);
         div.appendChild(removeButton);
+        div.appendChild(readButton);
         removeButton.addEventListener("click", removeFromLibrary);
+        readButton.addEventListener("click", () => {
+            book.toggleReadStatus();
+            displayOnPage();
+        });
     });
 }
 
