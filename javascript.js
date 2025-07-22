@@ -32,6 +32,13 @@ function addToLibrary(title, author, pages, isRead) {
     const book = new Book(title, author, pages, isRead);
     myLibrary.push(book);
 }
+function removeFromLibrary(event) {
+    const id = event.target.dataset.id;
+    let indexToRemove = myLibrary.findIndex((book) => book.id === id);
+    myLibrary.splice(indexToRemove, 1);
+    console.log(indexToRemove);
+    displayOnPage();
+}
 function displayOnPage() {
     bookSection.innerHTML = "";
     myLibrary.forEach((book) => {
@@ -42,9 +49,7 @@ function displayOnPage() {
         removeButton.dataset.id = book.id;
         bookSection.appendChild(div);
         div.appendChild(removeButton);
-        removeButton.addEventListener("click",() => {
-            console.log(`clicked ${book.id}`)
-        });
+        removeButton.addEventListener("click", removeFromLibrary);
     });
 }
 
