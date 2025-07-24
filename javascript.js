@@ -46,17 +46,20 @@ function displayOnPage() {
     bookSection.innerHTML = "";
     myLibrary.forEach((book) => {
         const div = document.createElement("div");
+        const bookInfo = document.createElement("p");
         const removeButton = document.createElement("button");
         const readButton = document.createElement("button");
 
-        div.textContent = book.info();
+        bookInfo.textContent = book.info();
         removeButton.textContent = "Remove Book";
         readButton.textContent = "Change read status";
 
+        div.dataset.read = book.isRead;
         removeButton.dataset.id = book.id;
         readButton.dataset.id = book.id;
 
         bookSection.appendChild(div);
+        div.appendChild(bookInfo);
         div.appendChild(removeButton);
         div.appendChild(readButton);
         removeButton.addEventListener("click", removeFromLibrary);
@@ -77,6 +80,27 @@ confirmButton.addEventListener("click", () => {
     dialog.close();
 });
 
+addToLibrary("MyTitle", "MyAuthor", 200, true);
+addToLibrary("MyTitle2", "MyAuthor2", 210, false);
+addToLibrary("TheHobbit", "Tolkien (probably written wrong)", 9999999, true);
+addToLibrary("MyTitle", "MyAuthor", 200, true);
+addToLibrary("MyTitle2", "MyAuthor2", 210, false);
+addToLibrary("TheHobbit", "Tolkien (probably written wrong)", 9999999, true);
+addToLibrary("MyTitle", "MyAuthor", 200, true);
+addToLibrary("MyTitle2", "MyAuthor2", 210, false);
+addToLibrary("TheHobbit", "Tolkien (probably written wrong)", 9999999, true);
+addToLibrary("MyTitle", "MyAuthor", 200, true);
+addToLibrary("MyTitle2", "MyAuthor2", 210, false);
+addToLibrary("TheHobbit", "Tolkien (probably written wrong)", 9999999, true);
+addToLibrary("MyTitle", "MyAuthor", 200, true);
+addToLibrary("MyTitle2", "MyAuthor2", 210, false);
+addToLibrary("TheHobbit", "Tolkien (probably written wrong)", 9999999, true);
+addToLibrary("MyTitle", "MyAuthor", 200, true);
+addToLibrary("MyTitle2", "MyAuthor2", 210, false);
+addToLibrary("TheHobbit", "Tolkien (probably written wrong)", 9999999, true);
+addToLibrary("MyTitle", "MyAuthor", 200, true);
+addToLibrary("MyTitle2", "MyAuthor2", 210, false);
+addToLibrary("TheHobbit", "Tolkien (probably written wrong)", 9999999, true);
 addToLibrary("MyTitle", "MyAuthor", 200, true);
 addToLibrary("MyTitle2", "MyAuthor2", 210, false);
 addToLibrary("TheHobbit", "Tolkien (probably written wrong)", 9999999, true);
